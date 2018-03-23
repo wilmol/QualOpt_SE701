@@ -55,6 +55,9 @@ public class Study implements Serializable {
     @ManyToOne
     private User user;
 
+    @Column(name = "bounced_mail")
+    private String bouncedMail;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "study_participant",
@@ -226,6 +229,14 @@ public class Study implements Serializable {
         this.documents = documents;
     }
 
+    public String getBouncedMail() {
+        return bouncedMail;
+    }
+
+    public void setBouncedMail(String bouncedMail) {
+        this.bouncedMail = bouncedMail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -249,14 +260,18 @@ public class Study implements Serializable {
     @Override
     public String toString() {
         return "Study{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", incentive='" + getIncentive() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", faq='" + getFaq() + "'" +
-            ", emailSubject='" + getEmailSubject() + "'" +
-            ", emailBody='" + getEmailBody() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", status=" + status +
+            ", incentive='" + incentive + '\'' +
+            ", emailSubject='" + emailSubject + '\'' +
+            ", emailBody='" + emailBody + '\'' +
+            ", faq='" + faq + '\'' +
+            ", user=" + user +
+            ", bouncedMail='" + bouncedMail + '\'' +
+            ", participants=" + participants +
+            ", documents=" + documents +
+            '}';
     }
 }

@@ -32,6 +32,8 @@ export class StudyConfirmDialogComponent {
         console.log('Sending invitation email ...');
         this.studyService.send(this.study).subscribe(bouncedMail => {
             console.log(`Bounced: ${bouncedMail}`);
+            this.study.bouncedMail = bouncedMail.join(', ');
+            this.studyService.update(this.study).subscribe();
             if (bouncedMail.length > 0){
                 this.showBouncedMailAlert(bouncedMail);
             }
@@ -47,6 +49,7 @@ export class StudyConfirmDialogComponent {
             title: `Failed to send invitations for study: ${studyName}`,
             text: `The following email addresses bounced:\n ${formattedMail}`,
             icon: 'error',
+            closeOnClickOutside: false,
             buttons: {
                 confirm: { text: `View ${studyName}` }
             }

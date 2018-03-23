@@ -27,15 +27,15 @@
         <dd>
             <span>{{study.faq}}</span>
         </dd>
-        <dt><span>FAQ</span></dt>
-        <dd>
-            <span>{{study.faq}}</span>
-        </dd>
         <dt><span>Participants</span></dt>
         <dd>
             <span *ngFor="let participant of study.participants; let last = last">
                 <a [routerLink]="['/participant', participant?.id ]">{{participant.email}}</a>{{last ? '' : ', '}}
             </span>
+        </dd>
+        <dt><span>Bounced Invitation Email Addresses</span></dt>
+        <dd>
+            <span>{{study.bouncedMail}}</span>
         </dd>
     </dl>
 
