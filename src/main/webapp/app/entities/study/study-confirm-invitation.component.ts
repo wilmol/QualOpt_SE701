@@ -9,6 +9,8 @@ import { StudyService } from './study.service';
 
 import * as _swal from 'sweetalert';
 import { SweetAlert } from 'sweetalert/typings/core';
+import {StudyDetailComponent} from "./study-detail.component";
+import {JhiEventManager} from "ng-jhipster";
 const swal: SweetAlert = _swal as any;
 
 @Component({
@@ -21,6 +23,7 @@ export class StudyConfirmDialogComponent {
 
     constructor(
         private studyService: StudyService,
+        private eventManager: JhiEventManager,
         public activeModal: NgbActiveModal) {
     }
 
@@ -33,7 +36,8 @@ export class StudyConfirmDialogComponent {
         this.studyService.send(this.study).subscribe(bouncedMail => {
             console.log(`Bounced: ${bouncedMail}`);
             this.study.bouncedMail = bouncedMail.join(', ');
-            this.studyService.update(this.study).subscribe();
+            this.studyService.update(this.study).subscribe(() =>
+                this.eventManager.broadcast({ name: 'studyListModification', content: 'OK' }));
             if (bouncedMail.length > 0){
                 this.showBouncedMailAlert(bouncedMail);
             }

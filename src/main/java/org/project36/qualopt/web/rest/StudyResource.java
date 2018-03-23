@@ -90,7 +90,6 @@ public class StudyResource {
     @Timed
     public ResponseEntity<Study> updateStudy(@Valid @RequestBody Study study) throws URISyntaxException {
         log.debug("REST request to update Study : {}", study);
-        log.debug("REST request to update Study, bouncedMail: {}", study.getBouncedMail());
         if (study.getId() == null) {
             return createStudy(study);
         }

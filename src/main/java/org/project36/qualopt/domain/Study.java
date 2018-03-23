@@ -260,18 +260,14 @@ public class Study implements Serializable {
     @Override
     public String toString() {
         return "Study{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", description='" + description + '\'' +
-            ", status=" + status +
-            ", incentive='" + incentive + '\'' +
-            ", emailSubject='" + emailSubject + '\'' +
-            ", emailBody='" + emailBody + '\'' +
-            ", faq='" + faq + '\'' +
-            ", user=" + user +
-            ", bouncedMail='" + bouncedMail + '\'' +
-            ", participants=" + participants +
-            ", documents=" + documents +
-            '}';
+            "id=" + getId() +
+            ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", incentive='" + getIncentive() + "'" +
+            ", status='" + getStatus() + "'" +
+            ", emailSubject='" + getEmailSubject() + "'" +
+            ", emailBody='" + getEmailBody() + "'" +
+            ", bouncedMail='" + getBouncedMail() + "'" +
+            "}";
     }
 }
