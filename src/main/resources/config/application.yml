@@ -22,6 +22,8 @@ management:
         mail:
             enabled: false # When using the MailService, configure an SMTP server and set this to true
 spring:
+    aop:
+        proxy-target-class: false
     application:
         name: QualOpt
     profiles:
@@ -45,17 +47,18 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
-    social: # Set social API keys in environment. see SocialConfiguration.java
+#    social: # Set social API keys in environment. see SocialConfiguration.java
         # jhipster-needle-add-social-configuration
 
-security:
-    basic:
-        enabled: false
+# security:
+#     basic:
+#         enabled: false
 
 server:
-    session:
-        cookie:
-            http-only: true
+    servlet:
+        session:
+            cookie:
+                http-only: true
 
 info:
     project:
@@ -107,4 +110,4 @@ jhipster:
 # https://jhipster.github.io/common-application-properties/
 # ===================================================================
 
-application:
+# application:
